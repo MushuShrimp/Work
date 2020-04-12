@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title></title>
+  <script type="text/javascript">
+      var clickTag = 'https://www.google.com/';
+  </script>
+  <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_2.1.2_min.js"></script>
+</head>
+<style type="text/css">
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #F6F6F6;
+}
+.default{
+  position: absolute;
+  left:-1px;
+  top:-1px;
+  width:320px;
+  height:50px;
+}
+#mainContainer {
+  cursor: pointer;
+  position: absolute;
+  width: 320px;
+  height: 50px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: none;
+}
+#charContainer{
+  left:63px;
+  top:11px;
+  width:60px;
+  height:70px;
+  position: absolute;
+  overflow: hidden;
+}
+</style>
+<body>
+  <div id="mainContainer" onclick="window.open(window.clickTag)">
+    <img class="default" src="bg.jpg" id="bg">
+    <img class="default" src="t1a.png" id="t1a">
+    <img class="default" src="t1b.png" id="t1b">
+    <img class="default" src="pack.jpg" id="pack">
+    <img class="default" src="t2.png" id="t2">
+    <img class="default" src="legal.png" id="legal">
+    <img class="default" src="logo.png" id="logo">
+
+
+  </div>
+  <script type="text/javascript">
+
+  var tl = new TimelineMax();
+  TweenMax.set(pack, {y:-50});
+  window.onload = function () {
+    mainContainer.style.display = "block";
+
+    tl.from([t1a], 0.3, {y:"-=50", alpha:0, ease:Quad.easeInOut});
+    tl.from([t1b], 0.3, {y:"+=50", alpha:0, ease:Quad.easeInOut},"+=0.25");
+
+    tl.to([t1a,t1b,pack,bg,logo], 0.5, {y:"+=50", ease:Quad.easeInOut}, "+=2");
+    tl.staggerFrom([t2,legal], 0.5, {alpha:0, ease:Quad.easeInOut}, 0.5);
+
+    console.log(tl.totalDuration());
+  }
+</script>
+</body>
+</html>

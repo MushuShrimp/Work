@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title></title>
+  <script type="text/javascript">
+      var clickTag = 'https://www.google.com/';
+  </script>
+  <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_2.1.2_min.js"></script>
+</head>
+<style type="text/css">
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #F6F6F6;
+}
+.default{
+  position: absolute;
+  left:-1px;
+  top:-1px;
+  width:300px;
+  height:250px;
+}
+#mainContainer {
+  cursor: pointer;
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: none;
+}
+#charContainer{
+  left:61px;
+  top:80px;
+  width:120px;
+  height:142px;
+  position: absolute;
+  overflow: hidden;
+}
+</style>
+<body>
+  <div id="mainContainer" onclick="window.open(window.clickTag)">
+    <img class="default" src="bg.jpg" id="bg">
+    <img class="default" src="flower.png" id="flower">
+    <div id="charContainer">
+      <img class="default" src="dandelion.png" id="dandelion">
+    </div>
+    <img class="default" src="prism.png" id="prism">
+    <img class="default" src="pedals.png" id="pedals">
+    <img class="default" src="logo.png" id="logo">
+    <img class="default" src="red-beam.png" id="beam1">
+    <img class="default" src="red-light.png" id="light1">
+    <img class="default" src="orange-beam.png" id="beam2">
+    <img class="default" src="orange-light.png" id="light2">
+    <img class="default" src="yellow-beam.png" id="beam3">
+    <img class="default" src="yellow-light.png" id="light3">
+    <img class="default" src="green-beam.png" id="beam4">
+    <img class="default" src="green-light.png" id="light4">
+    <img class="default" src="t1.png" id="t1">
+    <img class="default" src="t2.png" id="t2">
+    <img class="default" src="t3.png" id="t3">
+    <img class="default" src="pack.jpg" id="pack">
+    <img class="default" src="t4.png" id="t4">
+    <img class="default" src="legal.png" id="legal">
+
+
+  </div>
+  <script type="text/javascript">
+
+  var tl = new TimelineMax();
+  TweenMax.set(dandelion, {width:1080, height:143});
+  TweenMax.set([beam1,beam2,beam3,beam4], {width:203,height:188.5,x:97,y:71, alpha:0});
+  TweenMax.set([light1,light2,light3,light4], {width:59, height:59, x:66, y:136, alpha:0});
+  TweenMax.set(pack, {x:300});
+  window.onload = function () {
+    mainContainer.style.display = "block";
+    tl.from(charContainer, 3, {x:"-=200", ease:Linear.easeNone});
+    tl.from(prism, 0.25, {y:"-=250", ease:Quad.easeIn}, "-=0.5");
+    tl.to(bg, 0.125, {rotation:-5, yoyo:true, repeat:1, ease:Quad.easeInOut, transformOrigin:"30% 60%"}, "-=0.25");
+    tl.to(charContainer, 0.15, {scaleY:0, ease:Quad.easeIn, transformOrigin:"50% 100%"}, "-=0.37");
+    tl.from([pedals,flower], 0.01, {alpha:0}, "-=0.25");
+
+    tl.to(beam1, 0.3, {alpha:8}, "+=0.5");
+    tl.to(light1, 0.3, {alpha:7}, "-=0.3");
+
+    tl.to([beam1,light1], 0.5, {alpha:0, ease:Quad.easeOut});
+    tl.to([beam2], 0.4, {alpha:0.8}, "-=0.1");
+    tl.to(light2, 0.4, {alpha:0.7}, "-=0.4");
+
+
+    tl.to([beam2,light2], 0.5, {alpha:0, ease:Quad.easeOut}, "+=0.2");
+    tl.to([beam3], 0.4, {alpha:0.8}, "-=0.1");
+    tl.to(light3, 0.4, {alpha:0.7}, "-=0.4");
+
+    tl.to([beam3,light3], 0.5, {alpha:0, ease:Quad.easeOut}, "+=0.2");
+    tl.to([beam4], 0.4, {alpha:0.8}, "-=0.1");
+    tl.to(light4, 0.4, {alpha:0.7}, "-=0.4");
+
+    tl.to([beam4,light4], 0.5, {alpha:0, ease:Quad.easeOut}, "+=0.2");
+
+    tl.from([t1,t2], 0.3, {x:"+=200", alpha:0, ease:Quad.easeInOut}, 1.8);
+    tl.from([t3], 0.3, {x:"+=200", alpha:0, ease:Quad.easeInOut}, 2.5);
+
+    tl.to([t1,t2,t3,pack,bg,logo,beam1,beam2,beam3,beam4,light1,light2,light3,light4,pedals,flower,prism], 0.5, {x:"-=300", ease:Quad.easeInOut}, 7);
+    tl.staggerFrom([t4,legal], 0.5, {alpha:0, ease:Quad.easeInOut}, 0.5, 7.5);
+
+
+tl.to([beam1,beam2,beam3,beam4], 0.5, {ease:Linear.easeNone, rotationY:"+=180", transformOrigin:"0% 50%", yoyo:true,repeat:7}, 3.55);
+tl.to([beam1,beam2,beam3,beam4], 0.25, {ease:Linear.easeNone, scaleY:0.5, yoyo:true,repeat:7, repeatDelay:0.25}, 3.55);
+tl.to([light1,light2,light3,light4], 0.25, {ease:Linear.easeNone,scale:2, transformOrigin:"50% 50%", yoyo:true, repeat:14}, 3.55);
+    var frameAnim = TweenMax.to(dandelion,1,{repeat:2,x:-960,ease:SteppedEase.config(8)});
+
+    console.log(tl.totalDuration());
+  }
+</script>
+</body>
+</html>
